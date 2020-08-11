@@ -5,65 +5,13 @@
   <meta charset="UTF-8"/>
 </head>
 <body>
-  <script>
-		
-		const handOptions = ["ROCK", "PAPER", "SCISSORS"];
+	<div id="game-buttons-container">
+		<button class="game-button" id="Rock">Rock</button>
+		<button class="game-button" id="Paper">Paper</button>
+		<button class="game-button" id="Scissors">Scissors</button>
+	</div>
 
-		// Computer's play: returns random selection from rock, paper or scissors.
-		function getComputerChoice() {
-			return handOptions[Math.floor(Math.random() * handOptions.length)];
-		}
-		
-		// Player's play: asks user for selection from rock, paper or scissors.
-		function getPlayerChoice() {
-			let playerChoice;
-			// If player enters typo, reprompt.
-			while (!handOptions.includes(playerChoice)) {
-				playerChoice = (prompt("ROCK, PAPER, OR SCISSORS?")).toUpperCase(); 
-			}
-			return playerChoice;
-		}
-
-		// Single round play of Rock Paper Scissors.
-		function playRound(playerSelection, computerSelection) {
-			if (playerSelection === computerSelection) {
-				alert("Tie.");
-				return "tie";
-			}
-			else if (((playerSelection === "ROCK") && (computerSelection === "SCISSORS"))
-				|| ((playerSelection === "SCISSORS") && (computerSelection === "PAPER"))
-				|| ((playerSelection === "PAPER") && (computerSelection === "ROCK"))) {
-					alert(`You win! ${playerSelection} beats ${computerSelection}.`);
-					return "player";
-				}
-			else {
-				alert(`You lose! ${computerSelection} beats ${playerSelection}.`);
-				return "computer";
-			}
-		}
-
-		// Five-round game of Rock Paper Scissors.
-		function playGame() {
-			let gameCounter = 0;
-			let playerTally = 0;
-			let computerTally = 0;
-			while (gameCounter < 5) {
-				let roundResult = playRound(getPlayerChoice, getComputerChoice());
-				if (roundResult === "player") {
-					playerTally++;	
-				}
-				else if (roundResult === "computer") {
-					computerTally++;
-				}
-				gameCounter++; 
-				console.log(`Your score: ${playerTally}. Computer's score: ${computerTally}. 
-						Rounds left: ${5-gameCounter}.`);
-			}
-			console.log(`Game over! Your score: ${playerTally}. Computer's score: ${computerTally}.`);
-			return;			
-		}
-
-		console.log(playGame());
-  </script>
+	<div id ="results-container"></div>
+	<script src="script.js"></script>
 </body>
 </html>
